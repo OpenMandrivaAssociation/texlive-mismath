@@ -1,6 +1,6 @@
 Name:		texlive-mismath
-Version:	64993
-Release:	2
+Version:	67745
+Release:	1
 Summary:	Miscellaneous mathematical macros
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/mismath
