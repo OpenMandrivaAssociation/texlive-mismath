@@ -1,5 +1,5 @@
 Name:		texlive-mismath
-Version:	67745
+Version:	69169
 Release:	1
 Summary:	Miscellaneous mathematical macros
 Group:		Publishing
