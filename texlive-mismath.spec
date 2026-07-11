@@ -1,44 +1,26 @@
-Name:		texlive-mismath
-Version:	71549
-Release:	1
+%global tl_name mismath
+%global tl_revision 76547
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	3.2
+Release:	%{tl_revision}.1
 Summary:	Miscellaneous mathematical macros
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/mismath
 License:	lppl1.3
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/mismath.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/mismath.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/mismath.source.r%{version}.tar.xz
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/mismath.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/mismath.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/mismath.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+BuildSystem:	texlive
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-The package provides some mathematical macros to typeset:
-mathematical constants e, i, pi in upright shape
-(automatically) as recommended by ISO 80000-2, vectors with
-beautiful arrows and adjusted norm, some standard operator
-names, improved spacings in mathematical formulas, systems of
-equations and small matrices, displaymath in double columns for
-long calculations.
+The package provides some mathematical macros to typeset: mathematical
+constants e, i, p in upright shape (automatically) as recommended by ISO
+80000-2, vectors with nice arrows and adjusted norm (and tensors),
+tensors in sans serif bold italic shape, some standard operator names,
+improved spacings in mathematical formulas, systems of equations and
+small matrices, displaymath in double columns for lengthy calculations.
 
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-rm -rf tlpkg
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -a * %{buildroot}%{_texmfdistdir}
-
-%files
-%doc %{_texmfdistdir}/source/latex/mismath
-%{_texmfdistdir}/tex/latex/mismath
-%doc %{_texmfdistdir}/doc/latex/mismath
-
-%post -p %{_sbindir}/texlive.post
-
-%postun
-[ "$1" -eq 0 ] && %{_sbindir}/texlive.post
